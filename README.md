@@ -4,7 +4,16 @@ A production-quality, full-stack Employee Management System engineered with a **
 
 ---
 
-## 🚀 Live Demo & Architecture Highlights
+## 🚀 Live Production Deployments
+
+- **Live Frontend (Vercel)**: [https://frontend-blond-gamma-45.vercel.app](https://frontend-blond-gamma-45.vercel.app)
+- **Live Backend API (Render)**: [https://employee-management-api-vgao.onrender.com](https://employee-management-api-vgao.onrender.com)
+- **Live API Health Check**: [https://employee-management-api-vgao.onrender.com/api/health](https://employee-management-api-vgao.onrender.com/api/health)
+- **GitHub Repository**: [https://github.com/Siddartha2006/employee-management-system](https://github.com/Siddartha2006/employee-management-system)
+
+---
+
+## 🏗️ Live Demo & Architecture Highlights
 
 ```
 +-------------------------------------------------------------------------+
