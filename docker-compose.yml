@@ -1,0 +1,38 @@
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: employee_postgres
+    environment:
+      POSTGRES_USER: employeeuser
+      POSTGRES_PASSWORD: employeepassword
+      POSTGRES_DB: employeedb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U employeeuser -d employeedb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Flask REST API Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: employee_backend
+    environment:
+      FLASK_ENV: production
+      DATABASE_URL: postgresql://employeeuser:employeepassword@db:5432/employeedb
+      FRONTEND_URL: http://localhost:5173,http://localhost:3000
+      PORT: 5000
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
